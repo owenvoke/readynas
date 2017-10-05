@@ -1,0 +1,117 @@
+<?php
+
+namespace App;
+
+use GuzzleHttp\Client;
+use Psr\Http\Message\ResponseInterface;
+use pxgamer\ReadyNAS\Requests;
+
+/**
+ * Class System
+ * @package App
+ */
+class System
+{
+    use Requests\Firmware;
+
+    /**
+     * System constructor.
+     */
+    public function __construct()
+    {
+        $this->guzzle = new Client([
+            'base_uri' => 'https://' . getenv('NAS_IP') . '/dbbroker',
+            'verify'   => false
+        ]);
+    }
+
+    public function getFirmwareInfo()
+    {
+        $response = $this->sendFirmwareRequest(
+            'FW_Broker',
+            'FirmwareImage'
+        );
+
+        $device_info = $this->xmlToArray($response);
+
+        return $device_info;
+    }
+
+    public function getDeviceInfo()
+    {
+        $response = $this->sendRequest('SystemInfo', 'SystemInfo');
+
+        $device_info = $this->xmlToArray($response);
+
+        return $device_info;
+    }
+
+    public function getHealthInfo()
+    {
+        $response = $this->sendRequest('HealthInfo', 'Health_Collection');
+
+        $result = $this->xmlToArray($response);
+
+        return $result;
+    }
+
+    public function getAppInfo()
+    {
+        $response = $this->sendRequest('LaunchableApp', 'LocalApp_Collection');
+
+        $result = $this->xmlToArray($response);
+
+        return $result;
+    }
+
+    public function getDiskInfo()
+    {
+        $response = $this->sendRequest('DiskEnclosure', 'DiskEnclosure_Collection');
+
+        $result = $this->xmlToArray($response);
+
+        return $result;
+    }
+
+    public function getSmartInfo($drive)
+    {
+        $response = $this->sendRequest($drive, 'Disk_SMART_Info');
+
+        $result = $this->xmlToArray($response);
+
+        return $result;
+    }
+
+    public function getVolumeInfo()
+    {
+        $response = $this->sendRequest('Volumes', 'Volume_Collection');
+
+        $result = $this->xmlToArray($response);
+
+        return $result;
+    }
+
+    public function getProtocolInfo()
+    {
+        $response = $this->sendRequest('Protocols', 'Protocol_Collection');
+
+        $result = $this->xmlToArray($response);
+
+        return $result;
+    }
+
+    private function xmlToArray(ResponseInterface $response)
+    {
+        $data = new \SimpleXMLElement(
+            $response->getBody(),
+            null,
+            false,
+            'xs',
+            true
+        );
+
+        return $data->transaction->response->error ??
+               $data->transaction->response->result->{'get-s'}->children() ??
+               null;
+    }
+}
