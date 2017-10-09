@@ -7,7 +7,7 @@ namespace pxgamer\ReadyNAS\Requests;
  */
 trait FirmwareRequest
 {
-    use RequestType;
+    use StandardRequest;
 
     /**
      * Send a request to the Firmware Broker
