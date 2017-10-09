@@ -87,19 +87,4 @@ class System extends Requests\Requester
 
         return $result;
     }
-
-    private function xmlToArray(ResponseInterface $response)
-    {
-        $data = new \SimpleXMLElement(
-            $response->getBody(),
-            null,
-            false,
-            'xs',
-            true
-        );
-
-        return $data->transaction->response->error ??
-               $data->transaction->response->result->{'get-s'}->children() ??
-               null;
-    }
 }

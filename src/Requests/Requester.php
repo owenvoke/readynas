@@ -3,6 +3,7 @@
 namespace pxgamer\ReadyNAS\Requests;
 
 use GuzzleHttp\Client;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class Requester
@@ -23,5 +24,26 @@ class Requester
             'base_uri' => 'https://' . getenv('NAS_IP') . '/dbbroker',
             'verify'   => false
         ]);
+    }
+
+    /**
+     * Convert XML to an array
+     *
+     * @param ResponseInterface $response
+     * @return null
+     */
+    protected function xmlToArray(ResponseInterface $response)
+    {
+        $data = new \SimpleXMLElement(
+            $response->getBody(),
+            null,
+            false,
+            'xs',
+            true
+        );
+
+        return $data->transaction->response->error ??
+               $data->transaction->response->result->{'get-s'}->children() ??
+               null;
     }
 }
