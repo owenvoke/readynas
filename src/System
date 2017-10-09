@@ -12,6 +12,11 @@ class System extends Requests\Requester
 {
     use Requests\FirmwareRequest;
 
+    /**
+     * Get details on the current firmware
+     *
+     * @return array|null
+     */
     public function getFirmwareInfo()
     {
         $response = $this->sendFirmwareRequest(
@@ -24,6 +29,11 @@ class System extends Requests\Requester
         return $device_info;
     }
 
+    /**
+     * Get details on the device
+     *
+     * @return array|null
+     */
     public function getDeviceInfo()
     {
         $response = $this->sendRequest('SystemInfo', 'SystemInfo');
@@ -33,6 +43,11 @@ class System extends Requests\Requester
         return $device_info;
     }
 
+    /**
+     * Get details on the system's health
+     *
+     * @return array|null
+     */
     public function getHealthInfo()
     {
         $response = $this->sendRequest('HealthInfo', 'Health_Collection');
@@ -42,6 +57,11 @@ class System extends Requests\Requester
         return $result;
     }
 
+    /**
+     * Get details on the available protocols for the system (FTP, SSH, SMB, etc.)
+     *
+     * @return array|null
+     */
     public function getProtocolInfo()
     {
         $response = $this->sendRequest('Protocols', 'Protocol_Collection');
