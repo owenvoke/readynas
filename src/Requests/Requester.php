@@ -30,7 +30,7 @@ class Requester
      * Convert XML to an array
      *
      * @param ResponseInterface $response
-     * @return null
+     * @return array|null
      */
     protected function xmlToArray(ResponseInterface $response)
     {
