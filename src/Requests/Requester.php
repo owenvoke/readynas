@@ -21,7 +21,7 @@ class Requester
     public function __construct()
     {
         $this->guzzle = new Client([
-            'base_uri' => 'https://' . getenv('NAS_IP') . '/dbbroker',
+            'base_uri' => 'https://' . getenv('NAS_HOST') . '/dbbroker',
             'verify'   => false
         ]);
     }
