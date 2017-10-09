@@ -5,9 +5,9 @@ namespace pxgamer\ReadyNAS\Requests;
 use GuzzleHttp\Client;
 
 /**
- * Trait RequestType
+ * Trait StandardRequest
  */
-trait RequestType
+trait StandardRequest
 {
     /**
      * @var Client
