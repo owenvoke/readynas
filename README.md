@@ -8,10 +8,10 @@ A PHP management suite for ReadyNAS devices.
 
 ## Usage
 
-All that needs to be done, is to set the environment variables.
-`NAS_HOST` - The IP/domain of the NAS
-`NAS_USER` - The username to connect to your NAS with
-`NAS_PASS` - The password to connect to your NAS with
+All that needs to be done, is to set the environment variables.  
+`NAS_HOST` - The IP/domain of the NAS  
+`NAS_USER` - The username to connect to your NAS with  
+`NAS_PASS` - The password to connect to your NAS with  
 
 ## Compatibility
 
