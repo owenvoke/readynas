@@ -27,7 +27,7 @@ class Requester
     }
 
     /**
-     * Convert XML to an array
+     * Convert XML responses to an array
      *
      * @param ResponseInterface $response
      * @return array|null
