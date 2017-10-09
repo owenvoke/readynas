@@ -1,0 +1,15 @@
+{
+  "name": "pxgamer/readynas",
+  "description": "A PHP management suite for ReadyNAS devices.",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "require": {
+    "php": "^7.1.0",
+    "guzzlehttp/guzzle": "^6.3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "pxgamer\\ReadyNAS\\": "src/"
+    }
+  }
+}
