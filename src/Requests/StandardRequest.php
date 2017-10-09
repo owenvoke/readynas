@@ -22,7 +22,7 @@ trait StandardRequest
      * @param string $resourceUrl
      * @return \Psr\Http\Message\ResponseInterface
      */
-    private function sendRequest(string $resourceId, string $resourceType, string $resourceUrl = '/dbbroker')
+    private function sendStandardRequest(string $resourceId, string $resourceType, string $resourceUrl = '/dbbroker')
     {
         $xml = new \SimpleXMLElement(
             '<xs:nml

@@ -18,7 +18,7 @@ class Apps extends Requests\Requester
      */
     public function getAppsInfo()
     {
-        $response = $this->sendRequest('LaunchableApp', 'LocalApp_Collection');
+        $response = $this->sendStandardRequest('LaunchableApp', 'LocalApp_Collection');
 
         $result = $this->xmlToArray($response);
 

@@ -36,7 +36,7 @@ class System extends Requests\Requester
      */
     public function getDeviceInfo()
     {
-        $response = $this->sendRequest('SystemInfo', 'SystemInfo');
+        $response = $this->sendStandardRequest('SystemInfo', 'SystemInfo');
 
         $device_info = $this->xmlToArray($response);
 
@@ -50,7 +50,7 @@ class System extends Requests\Requester
      */
     public function getHealthInfo()
     {
-        $response = $this->sendRequest('HealthInfo', 'Health_Collection');
+        $response = $this->sendStandardRequest('HealthInfo', 'Health_Collection');
 
         $result = $this->xmlToArray($response);
 
@@ -64,7 +64,7 @@ class System extends Requests\Requester
      */
     public function getProtocolInfo()
     {
-        $response = $this->sendRequest('Protocols', 'Protocol_Collection');
+        $response = $this->sendStandardRequest('Protocols', 'Protocol_Collection');
 
         $result = $this->xmlToArray($response);
 

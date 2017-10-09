@@ -18,6 +18,6 @@ trait FirmwareRequest
      */
     protected function sendFirmwareRequest(string $resourceId, string $resourceType)
     {
-        return $this->sendRequest($resourceId, $resourceType, '/fwbroker');
+        return $this->sendStandardRequest($resourceId, $resourceType, '/fwbroker');
     }
 }

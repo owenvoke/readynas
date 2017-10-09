@@ -18,7 +18,7 @@ class Storage extends Requests\Requester
      */
     public function getDisksInfo()
     {
-        $response = $this->sendRequest('DiskEnclosure', 'DiskEnclosure_Collection');
+        $response = $this->sendStandardRequest('DiskEnclosure', 'DiskEnclosure_Collection');
 
         $result = $this->xmlToArray($response);
 
@@ -34,7 +34,7 @@ class Storage extends Requests\Requester
      */
     public function getSmartInfo($drive)
     {
-        $response = $this->sendRequest($drive, 'Disk_SMART_Info');
+        $response = $this->sendStandardRequest($drive, 'Disk_SMART_Info');
 
         $result = $this->xmlToArray($response);
 
@@ -48,7 +48,7 @@ class Storage extends Requests\Requester
      */
     public function getVolumeInfo()
     {
-        $response = $this->sendRequest('Volumes', 'Volume_Collection');
+        $response = $this->sendStandardRequest('Volumes', 'Volume_Collection');
 
         $result = $this->xmlToArray($response);
 
