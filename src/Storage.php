@@ -24,4 +24,20 @@ class Storage extends Requests\Requester
 
         return $result;
     }
+
+    /**
+     * Retrieve S.M.A.R.T. results for a specific disk drive
+     *
+     * @link https://en.wikipedia.org/wiki/S.M.A.R.T. - Wikipedia SMART test information
+     * @param string $drive
+     * @return array|null
+     */
+    public function getSmartInfo($drive)
+    {
+        $response = $this->sendRequest($drive, 'Disk_SMART_Info');
+
+        $result = $this->xmlToArray($response);
+
+        return $result;
+    }
 }
