@@ -5,9 +5,9 @@ namespace pxgamer\ReadyNAS;
 use pxgamer\ReadyNAS\Requests;
 
 /**
- * Class Disks
+ * Class Storage
  */
-class Disks extends Requests\Requester
+class Storage extends Requests\Requester
 {
     use Requests\StandardRequest;
 
