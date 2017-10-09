@@ -3,9 +3,9 @@
 namespace pxgamer\ReadyNAS\Requests;
 
 /**
- * Trait Firmware
+ * Trait FirmwareRequest
  */
-trait Firmware
+trait FirmwareRequest
 {
     use RequestType;
 
