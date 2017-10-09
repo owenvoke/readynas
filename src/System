@@ -2,7 +2,6 @@
 
 namespace App;
 
-use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
 use pxgamer\ReadyNAS\Requests;
 
@@ -10,20 +9,9 @@ use pxgamer\ReadyNAS\Requests;
  * Class System
  * @package App
  */
-class System
+class System extends Requests\Requester
 {
-    use Requests\Firmware;
-
-    /**
-     * System constructor.
-     */
-    public function __construct()
-    {
-        $this->guzzle = new Client([
-            'base_uri' => 'https://' . getenv('NAS_IP') . '/dbbroker',
-            'verify'   => false
-        ]);
-    }
+    use Requests\FirmwareRequest;
 
     public function getFirmwareInfo()
     {
