@@ -40,4 +40,18 @@ class Storage extends Requests\Requester
 
         return $result;
     }
+
+    /**
+     * Get information on what volumes are available in storage
+     *
+     * @return array|null
+     */
+    public function getVolumeInfo()
+    {
+        $response = $this->sendRequest('Volumes', 'Volume_Collection');
+
+        $result = $this->xmlToArray($response);
+
+        return $result;
+    }
 }
