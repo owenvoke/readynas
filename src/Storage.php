@@ -16,7 +16,7 @@ class Storage extends Requests\Requester
      *
      * @return array|null
      */
-    public function getInfo()
+    public function getDisksInfo()
     {
         $response = $this->sendRequest('DiskEnclosure', 'DiskEnclosure_Collection');
 
