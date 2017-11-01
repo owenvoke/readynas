@@ -18,6 +18,7 @@ trait Element
         if (is_object($data)) {
             foreach ($data as $item => $value) {
                 $itemLower = strtolower($item);
+                $itemLower = str_replace('-', '_', $itemLower);
                 if (property_exists($this, $itemLower)) {
                     switch (true) {
                         case is_numeric((string)$value):
