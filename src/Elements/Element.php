@@ -16,7 +16,10 @@ trait Element
     public function populateFromData($data)
     {
         if (is_object($data)) {
-            foreach ($data as $item => $value) {
+            $dataArray = (array)$data;
+            $dataArray = array_merge($dataArray, $dataArray['@attributes']);
+
+            foreach ($dataArray as $item => $value) {
                 $itemLower = strtolower($item);
                 $itemLower = str_replace('-', '_', $itemLower);
                 if (property_exists($this, $itemLower)) {
