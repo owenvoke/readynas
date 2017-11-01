@@ -11,6 +11,7 @@ trait Element
      * Populate the class from an object
      *
      * @param object $data
+     * @return Element
      */
     public function populateFromData($data)
     {
@@ -22,5 +23,7 @@ trait Element
                 }
             }
         }
+
+        return $this;
     }
 }
