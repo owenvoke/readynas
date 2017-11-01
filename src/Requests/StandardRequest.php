@@ -10,11 +10,6 @@ use GuzzleHttp\Client;
 trait StandardRequest
 {
     /**
-     * @var Client
-     */
-    private $guzzle;
-
-    /**
      * Send a general request, by default to the DB Broker
      *
      * @param string $resourceId

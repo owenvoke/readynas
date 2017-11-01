@@ -2,6 +2,7 @@
 
 namespace pxgamer\ReadyNAS;
 
+use Illuminate\Support\Collection;
 use pxgamer\ReadyNAS\Requests;
 
 /**
@@ -14,7 +15,7 @@ class Apps extends Requests\Requester
     /**
      * Get information about all installed apps
      *
-     * @return array|null
+     * @return Collection|null
      */
     public function getAppsInfo()
     {
@@ -22,6 +23,16 @@ class Apps extends Requests\Requester
 
         $result = $this->xmlToArray($response);
 
-        return $result;
+        if (isset($result->LocalApp_Collection->Application)) {
+            $apps = [];
+
+            foreach ($result->LocalApp_Collection->Application as $app) {
+                $apps[] = (new Elements\App)->populateFromData($app);
+            }
+
+            return collect($apps);
+        }
+
+        return null;
     }
 }

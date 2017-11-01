@@ -2,6 +2,7 @@
 
 namespace pxgamer\ReadyNAS;
 
+use Illuminate\Support\Collection;
 use pxgamer\ReadyNAS\Requests;
 
 /**
@@ -14,13 +15,23 @@ class Storage extends Requests\Requester
     /**
      * Get information about all disks
      *
-     * @return array|null
+     * @return Collection|array|null
      */
     public function getDisksInfo()
     {
         $response = $this->sendStandardRequest('DiskEnclosure', 'DiskEnclosure_Collection');
 
         $result = $this->xmlToArray($response);
+
+        if (isset($result->DiskEnclosure_Collection->DiskEnclosure->Disk_Collection->Disk)) {
+            $disks = [];
+
+            foreach ($result->DiskEnclosure_Collection->DiskEnclosure->Disk_Collection->Disk as $disk) {
+                $disks[] = (new Elements\Disk)->populateFromData($disk);
+            }
+
+            return collect($disks);
+        }
 
         return $result;
     }
@@ -30,7 +41,7 @@ class Storage extends Requests\Requester
      *
      * @link https://en.wikipedia.org/wiki/S.M.A.R.T. - Wikipedia SMART test information
      * @param string $drive
-     * @return array|null
+     * @return Elements\Element|array|null
      */
     public function getSmartInfo($drive)
     {
@@ -38,19 +49,29 @@ class Storage extends Requests\Requester
 
         $result = $this->xmlToArray($response);
 
+        if (isset($result->DiskSMARTInfo->HealthData)) {
+            return (new Elements\Smart)
+                ->populateFromData($result->DiskSMARTInfo->HealthData);
+        }
+
         return $result;
     }
 
     /**
      * Get information on what volumes are available in storage
      *
-     * @return array|null
+     * @return Elements\Element|array|null
      */
     public function getVolumeInfo()
     {
         $response = $this->sendStandardRequest('Volumes', 'Volume_Collection');
 
         $result = $this->xmlToArray($response);
+
+        if (isset($result->Volume_Collection->Volume->Property_List)) {
+            return (new Elements\Volume)
+                ->populateFromData($result->Volume_Collection->Volume->Property_List);
+        }
 
         return $result;
     }
