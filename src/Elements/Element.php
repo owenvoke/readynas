@@ -17,7 +17,9 @@ trait Element
     {
         if (is_object($data)) {
             $dataArray = (array)$data;
-            $dataArray = array_merge($dataArray, $dataArray['@attributes']);
+            if (isset($dataArray['@attributes'])) {
+                $dataArray = array_merge($dataArray, $dataArray['@attributes']);
+            }
 
             foreach ($dataArray as $item => $value) {
                 $itemLower = strtolower($item);
