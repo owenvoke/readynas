@@ -60,13 +60,18 @@ class Storage extends Requests\Requester
     /**
      * Get information on what volumes are available in storage
      *
-     * @return Collection|array|null
+     * @return Elements\Element|array|null
      */
     public function getVolumeInfo()
     {
         $response = $this->sendStandardRequest('Volumes', 'Volume_Collection');
 
         $result = $this->xmlToArray($response);
+
+        if (isset($result->Volume_Collection->Volume->Property_List)) {
+            return (new Elements\Volume)
+                ->populateFromData($result->Volume_Collection->Volume->Property_List);
+        }
 
         return $result;
     }
