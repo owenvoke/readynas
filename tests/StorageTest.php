@@ -3,6 +3,7 @@
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\TestCase;
 use pxgamer\ReadyNAS\Elements\Smart;
+use pxgamer\ReadyNAS\Elements\Volume;
 use pxgamer\ReadyNAS\Storage;
 
 /**
@@ -40,6 +41,6 @@ class StorageTest extends TestCase
         $disks = new Storage();
         $smartInfo = $disks->getVolumeInfo();
 
-        $this->assertInstanceOf(Collection::class, $smartInfo);
+        $this->assertInstanceOf(Volume::class, $smartInfo);
     }
 }
