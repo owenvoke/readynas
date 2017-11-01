@@ -49,6 +49,11 @@ class Storage extends Requests\Requester
 
         $result = $this->xmlToArray($response);
 
+        if (isset($result->DiskSMARTInfo->HealthData)) {
+            return (new Elements\Smart)
+                ->populateFromData($result->DiskSMARTInfo->HealthData);
+        }
+
         return $result;
     }
 
