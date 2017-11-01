@@ -43,7 +43,7 @@ class Requester
         );
 
         return $data->transaction->response->error ??
-               $data->transaction->response->result->{'get-s'}->children() ??
-               null;
+            $data->transaction->response->result->{'get-s'}->children() ??
+            null;
     }
 }
