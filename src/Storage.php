@@ -41,7 +41,7 @@ class Storage extends Requests\Requester
      *
      * @link https://en.wikipedia.org/wiki/S.M.A.R.T. - Wikipedia SMART test information
      * @param string $drive
-     * @return Collection|array|null
+     * @return Elements\Element|array|null
      */
     public function getSmartInfo($drive)
     {
