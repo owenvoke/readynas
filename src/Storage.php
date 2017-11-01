@@ -2,6 +2,7 @@
 
 namespace pxgamer\ReadyNAS;
 
+use Illuminate\Support\Collection;
 use pxgamer\ReadyNAS\Requests;
 
 /**
@@ -14,7 +15,7 @@ class Storage extends Requests\Requester
     /**
      * Get information about all disks
      *
-     * @return array|null
+     * @return Collection|array|null
      */
     public function getDisksInfo()
     {
@@ -40,7 +41,7 @@ class Storage extends Requests\Requester
      *
      * @link https://en.wikipedia.org/wiki/S.M.A.R.T. - Wikipedia SMART test information
      * @param string $drive
-     * @return array|null
+     * @return Collection|array|null
      */
     public function getSmartInfo($drive)
     {
@@ -54,7 +55,7 @@ class Storage extends Requests\Requester
     /**
      * Get information on what volumes are available in storage
      *
-     * @return array|null
+     * @return Collection|array|null
      */
     public function getVolumeInfo()
     {
