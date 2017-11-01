@@ -28,8 +28,18 @@ class StorageTest extends TestCase
     {
         $disks = new Storage();
         $smartInfo = $disks->getSmartInfo('sda');
-        var_dump($smartInfo);
 
         $this->assertInstanceOf(Smart::class, $smartInfo);
+    }
+
+    /**
+     * Test whether Volume information can be retrieved as a Collection
+     */
+    public function testCanGetVolumeInfo()
+    {
+        $disks = new Storage();
+        $smartInfo = $disks->getVolumeInfo();
+
+        $this->assertInstanceOf(Collection::class, $smartInfo);
     }
 }
