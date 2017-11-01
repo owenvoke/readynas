@@ -22,6 +22,16 @@ class Storage extends Requests\Requester
 
         $result = $this->xmlToArray($response);
 
+        if (isset($result->DiskEnclosure_Collection->DiskEnclosure->Disk_Collection->Disk)) {
+            $disks = [];
+
+            foreach ($result->DiskEnclosure_Collection->DiskEnclosure->Disk_Collection->Disk as $disk) {
+                $disks[] = (new Elements\Disk)->populateFromData($disk);
+            }
+
+            return collect($disks);
+        }
+
         return $result;
     }
 
