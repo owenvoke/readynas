@@ -15,5 +15,8 @@
         "psr-4": {
             "pxgamer\\ReadyNAS\\": "src/"
         }
+    },
+    "suggest": {
+        "vlucas/phpdotenv": "Allows better management of environment variables using a .env file"
     }
 }
