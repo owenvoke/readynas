@@ -57,13 +57,35 @@ class System extends Requester
     /**
      * Get details on the system's health.
      *
-     * @return array|null
+     * @return Collection|array|null
      */
     public function getHealthInfo()
     {
         $response = $this->sendStandardRequest('HealthInfo', 'Health_Collection');
 
         $result = $this->xmlToArray($response);
+
+        if (isset($result->Health_Collection->Enclosure_Health)) {
+            $statuses = [];
+
+            foreach ($result->Health_Collection->Enclosure_Health->children() as $health) {
+                /** @var \SimpleXMLElement $health */
+                switch ($health->getName()) {
+                    case 'Fan':
+                        $statuses['Fan'] = (new Elements\Health\Fan())->populateFromData($health);
+                        break;
+                    case 'Temperature':
+                        $statuses['Temperature'] = (new Elements\Health\Temperature())->populateFromData($health);
+                        break;
+                    case 'Disk':
+                        $statuses['Disk'][] = (new Elements\Health\Disk())->populateFromData($health);
+                        break;
+                    default:
+                }
+            }
+
+            return collect($statuses);
+        }
 
         return $result;
     }
