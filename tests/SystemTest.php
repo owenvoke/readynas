@@ -1,6 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
+use pxgamer\ReadyNAS\Elements\Device;
 use pxgamer\ReadyNAS\Elements\Firmware;
 use pxgamer\ReadyNAS\System;
 
@@ -10,7 +11,7 @@ use pxgamer\ReadyNAS\System;
 class SystemTest extends TestCase
 {
     /**
-     * Test whether Firmware information can be retrieved as a Collection.
+     * Test whether Firmware information can be retrieved as a Firmware instance.
      */
     public function testCanGetFirmwareInfo()
     {
@@ -18,5 +19,16 @@ class SystemTest extends TestCase
         $firmwareInfo = $system->getFirmwareInfo();
 
         $this->assertInstanceOf(Firmware::class, $firmwareInfo);
+    }
+
+    /**
+     * Test whether Device information can be retrieved as a Device instance.
+     */
+    public function testCanGetDeviceInfo()
+    {
+        $system = new System();
+        $deviceInfo = $system->getDeviceInfo();
+
+        $this->assertInstanceOf(Device::class, $deviceInfo);
     }
 }
