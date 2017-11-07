@@ -69,18 +69,20 @@ class System extends Requester
             $statuses = [];
 
             foreach ($result->Health_Collection->Enclosure_Health->children() as $health) {
-                /** @var \SimpleXMLElement $health */
+                /**
+ * @var \SimpleXMLElement $health 
+*/
                 switch ($health->getName()) {
-                    case 'Fan':
-                        $statuses['Fan'] = (new Elements\Health\Fan())->populateFromData($health);
-                        break;
-                    case 'Temperature':
-                        $statuses['Temperature'] = (new Elements\Health\Temperature())->populateFromData($health);
-                        break;
-                    case 'Disk':
-                        $statuses['Disk'][] = (new Elements\Health\Disk())->populateFromData($health);
-                        break;
-                    default:
+                case 'Fan':
+                    $statuses['Fan'] = (new Elements\Health\Fan())->populateFromData($health);
+                    break;
+                case 'Temperature':
+                    $statuses['Temperature'] = (new Elements\Health\Temperature())->populateFromData($health);
+                    break;
+                case 'Disk':
+                    $statuses['Disk'][] = (new Elements\Health\Disk())->populateFromData($health);
+                    break;
+                default:
                 }
             }
 
