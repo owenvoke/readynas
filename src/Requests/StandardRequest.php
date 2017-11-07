@@ -33,7 +33,8 @@ trait StandardRequest
 
         $response = $this->guzzle
             ->post(
-                $resourceUrl, [
+                $resourceUrl,
+                [
                 'body' => $xml->asXML(),
                 'auth' => [
                     getenv('NAS_USER'),

@@ -27,20 +27,20 @@ trait Element
                 $itemLower = str_replace('-', '_', $itemLower);
                 if (property_exists($this, $itemLower)) {
                     switch (true) {
-                    case is_numeric((string) $value):
-                        $value = (int) $value;
-                        break;
-                    case (string) $value === 'true':
-                        $value = true;
-                        break;
-                    case (string) $value === 'false':
-                        $value = false;
-                        break;
-                    case (string) $value !== '':
-                        $value = (string) $value;
-                        break;
-                    default:
-                        $value = null;
+                        case is_numeric((string) $value):
+                            $value = (int) $value;
+                            break;
+                        case (string) $value === 'true':
+                            $value = true;
+                            break;
+                        case (string) $value === 'false':
+                            $value = false;
+                            break;
+                        case (string) $value !== '':
+                            $value = (string) $value;
+                            break;
+                        default:
+                            $value = null;
                     }
                     $this->$itemLower = $value;
                 }
