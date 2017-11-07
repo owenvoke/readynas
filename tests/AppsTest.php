@@ -5,12 +5,12 @@ use PHPUnit\Framework\TestCase;
 use pxgamer\ReadyNAS\Apps;
 
 /**
- * Class AppsTest
+ * Class AppsTest.
  */
 class AppsTest extends TestCase
 {
     /**
-     * Test whether Apps information can be retrieved as a Collection
+     * Test whether Apps information can be retrieved as a Collection.
      */
     public function testCanGetAppsInfo()
     {

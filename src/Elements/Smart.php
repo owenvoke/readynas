@@ -3,7 +3,7 @@
 namespace pxgamer\ReadyNAS\Elements;
 
 /**
- * Class Smart
+ * Class Smart.
  */
 class Smart
 {

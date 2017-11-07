@@ -5,15 +5,14 @@ namespace App;
 use pxgamer\ReadyNAS\Requests;
 
 /**
- * Class System
- * @package App
+ * Class System.
  */
 class System extends Requests\Requester
 {
     use Requests\FirmwareRequest;
 
     /**
-     * Get details on the current firmware
+     * Get details on the current firmware.
      *
      * @return array|null
      */
@@ -30,7 +29,7 @@ class System extends Requests\Requester
     }
 
     /**
-     * Get details on the device
+     * Get details on the device.
      *
      * @return array|null
      */
@@ -44,7 +43,7 @@ class System extends Requests\Requester
     }
 
     /**
-     * Get details on the system's health
+     * Get details on the system's health.
      *
      * @return array|null
      */
@@ -58,7 +57,7 @@ class System extends Requests\Requester
     }
 
     /**
-     * Get details on the available protocols for the system (FTP, SSH, SMB, etc.)
+     * Get details on the available protocols for the system (FTP, SSH, SMB, etc.).
      *
      * @return array|null
      */

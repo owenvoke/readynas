@@ -3,7 +3,7 @@
 namespace pxgamer\ReadyNAS\Elements;
 
 /**
- * Class Disk
+ * Class Disk.
  */
 class Disk
 {
