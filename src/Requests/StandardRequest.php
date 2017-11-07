@@ -32,13 +32,15 @@ trait StandardRequest
         $get->addAttribute('resource-type', $resourceType);
 
         $response = $this->guzzle
-            ->post($resourceUrl, [
+            ->post(
+                $resourceUrl, [
                 'body' => $xml->asXML(),
                 'auth' => [
                     getenv('NAS_USER'),
                     getenv('NAS_PASS'),
                 ],
-            ]);
+                ]
+            );
 
         return $response;
     }
