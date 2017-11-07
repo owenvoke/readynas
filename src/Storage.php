@@ -3,17 +3,16 @@
 namespace pxgamer\ReadyNAS;
 
 use Illuminate\Support\Collection;
-use pxgamer\ReadyNAS\Requests;
 
 /**
- * Class Storage
+ * Class Storage.
  */
 class Storage extends Requests\Requester
 {
     use Requests\StandardRequest;
 
     /**
-     * Get information about all disks
+     * Get information about all disks.
      *
      * @return Collection|array|null
      */
@@ -27,7 +26,7 @@ class Storage extends Requests\Requester
             $disks = [];
 
             foreach ($result->DiskEnclosure_Collection->DiskEnclosure->Disk_Collection->Disk as $disk) {
-                $disks[] = (new Elements\Disk)->populateFromData($disk);
+                $disks[] = (new Elements\Disk())->populateFromData($disk);
             }
 
             return collect($disks);
@@ -37,10 +36,12 @@ class Storage extends Requests\Requester
     }
 
     /**
-     * Retrieve S.M.A.R.T. results for a specific disk drive
+     * Retrieve S.M.A.R.T. results for a specific disk drive.
      *
      * @link https://en.wikipedia.org/wiki/S.M.A.R.T. - Wikipedia SMART test information
+     *
      * @param string $drive
+     *
      * @return Elements\Element|array|null
      */
     public function getSmartInfo($drive)
@@ -50,7 +51,7 @@ class Storage extends Requests\Requester
         $result = $this->xmlToArray($response);
 
         if (isset($result->DiskSMARTInfo->HealthData)) {
-            return (new Elements\Smart)
+            return (new Elements\Smart())
                 ->populateFromData($result->DiskSMARTInfo->HealthData);
         }
 
@@ -58,7 +59,7 @@ class Storage extends Requests\Requester
     }
 
     /**
-     * Get information on what volumes are available in storage
+     * Get information on what volumes are available in storage.
      *
      * @return Elements\Element|array|null
      */
@@ -69,7 +70,7 @@ class Storage extends Requests\Requester
         $result = $this->xmlToArray($response);
 
         if (isset($result->Volume_Collection->Volume->Property_List)) {
-            return (new Elements\Volume)
+            return (new Elements\Volume())
                 ->populateFromData($result->Volume_Collection->Volume->Property_List);
         }
 

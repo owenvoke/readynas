@@ -3,7 +3,7 @@
 namespace pxgamer\ReadyNAS\Elements;
 
 /**
- * Class Volume
+ * Class Volume.
  */
 class Volume
 {

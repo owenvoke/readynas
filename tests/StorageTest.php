@@ -7,12 +7,12 @@ use pxgamer\ReadyNAS\Elements\Volume;
 use pxgamer\ReadyNAS\Storage;
 
 /**
- * Class StorageTest
+ * Class StorageTest.
  */
 class StorageTest extends TestCase
 {
     /**
-     * Test whether Disks information can be retrieved as a Collection
+     * Test whether Disks information can be retrieved as a Collection.
      */
     public function testCanGetDisksInfo()
     {
@@ -23,7 +23,7 @@ class StorageTest extends TestCase
     }
 
     /**
-     * Test whether S.M.A.R.T. information can be retrieved as a Smart instance
+     * Test whether S.M.A.R.T. information can be retrieved as a Smart instance.
      */
     public function testCanGetSmartInfo()
     {
@@ -34,7 +34,7 @@ class StorageTest extends TestCase
     }
 
     /**
-     * Test whether Volume information can be retrieved as a Collection
+     * Test whether Volume information can be retrieved as a Collection.
      */
     public function testCanGetVolumeInfo()
     {

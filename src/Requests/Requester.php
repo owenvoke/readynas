@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Class Requester
+ * Class Requester.
  */
 class Requester
 {
@@ -21,15 +21,16 @@ class Requester
     public function __construct()
     {
         $this->guzzle = new Client([
-            'base_uri' => 'https://' . getenv('NAS_HOST') . '/dbbroker',
-            'verify'   => false
+            'base_uri' => 'https://'.getenv('NAS_HOST').'/dbbroker',
+            'verify'   => false,
         ]);
     }
 
     /**
-     * Convert XML responses to an array
+     * Convert XML responses to an array.
      *
      * @param ResponseInterface $response
+     *
      * @return array|null
      */
     protected function xmlToArray(ResponseInterface $response)

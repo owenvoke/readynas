@@ -3,7 +3,7 @@
 namespace pxgamer\ReadyNAS\Elements;
 
 /**
- * Class App
+ * Class App.
  */
 class App
 {

@@ -3,17 +3,16 @@
 namespace pxgamer\ReadyNAS;
 
 use Illuminate\Support\Collection;
-use pxgamer\ReadyNAS\Requests;
 
 /**
- * Class Apps
+ * Class Apps.
  */
 class Apps extends Requests\Requester
 {
     use Requests\StandardRequest;
 
     /**
-     * Get information about all installed apps
+     * Get information about all installed apps.
      *
      * @return Collection|null
      */
@@ -27,12 +26,10 @@ class Apps extends Requests\Requester
             $apps = [];
 
             foreach ($result->LocalApp_Collection->Application as $app) {
-                $apps[] = (new Elements\App)->populateFromData($app);
+                $apps[] = (new Elements\App())->populateFromData($app);
             }
 
             return collect($apps);
         }
-
-        return null;
     }
 }
