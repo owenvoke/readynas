@@ -37,15 +37,20 @@ class System extends Requester
     /**
      * Get details on the device.
      *
-     * @return array|null
+     * @return Elements\Element|array|null
      */
     public function getDeviceInfo()
     {
         $response = $this->sendStandardRequest('SystemInfo', 'SystemInfo');
 
-        $device_info = $this->xmlToArray($response);
+        $result = $this->xmlToArray($response);
 
-        return $device_info;
+        if (isset($result->SystemInfo)) {
+            return (new Elements\Device())
+                ->populateFromData($result->SystemInfo);
+        }
+
+        return $result;
     }
 
     /**
