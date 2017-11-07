@@ -2,6 +2,7 @@
 
 namespace pxgamer\ReadyNAS;
 
+use Illuminate\Support\Collection;
 use pxgamer\ReadyNAS\Requests\FirmwareRequest;
 use pxgamer\ReadyNAS\Requests\Requester;
 
@@ -70,13 +71,23 @@ class System extends Requester
     /**
      * Get details on the available protocols for the system (FTP, SSH, SMB, etc.).
      *
-     * @return array|null
+     * @return Collection|array|null
      */
     public function getProtocolInfo()
     {
         $response = $this->sendStandardRequest('Protocols', 'Protocol_Collection');
 
         $result = $this->xmlToArray($response);
+
+        if (isset($result->Protocol_Collection->Protocol)) {
+            $protocols = [];
+
+            foreach ($result->Protocol_Collection->Protocol as $protocol) {
+                $protocols[] = (new Elements\Protocol())->populateFromData($protocol);
+            }
+
+            return collect($protocols);
+        }
 
         return $result;
     }
