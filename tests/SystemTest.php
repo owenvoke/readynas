@@ -34,6 +34,17 @@ class SystemTest extends TestCase
     }
 
     /**
+     * Test whether Health information can be retrieved as a Collection.
+     */
+    public function testCanGetHealthInfo()
+    {
+        $system = new System();
+        $deviceInfo = $system->getHealthInfo();
+
+        $this->assertInstanceOf(Collection::class, $deviceInfo);
+    }
+
+    /**
      * Test whether Protocol information can be retrieved as a Collection.
      */
     public function testCanGetProtocolInfo()
