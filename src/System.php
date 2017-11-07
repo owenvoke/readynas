@@ -15,7 +15,7 @@ class System extends Requester
     /**
      * Get details on the current firmware.
      *
-     * @return array|null
+     * @return Elements\Element|array|null
      */
     public function getFirmwareInfo()
     {
@@ -24,9 +24,14 @@ class System extends Requester
             'FirmwareImage'
         );
 
-        $device_info = $this->xmlToArray($response);
+        $result = $this->xmlToArray($response);
 
-        return $device_info;
+        if (isset($result->FirmwareImage)) {
+            return (new Elements\Firmware())
+                ->populateFromData($result->FirmwareImage);
+        }
+
+        return new Elements\Firmware();
     }
 
     /**
