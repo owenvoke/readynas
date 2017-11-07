@@ -23,8 +23,8 @@ trait StandardRequest
             xmlns:xs="http://www.netgear.com/protocol/transaction/NMLSchema-0.9"
             xmlns="urn:netgear:nas:readynasd"/>'
         );
-        $xml->addAttribute('dst', 'dpv_'.time());
-        $xml->addAttribute('src', 'nas');
+        $xml->addAttribute('src', 'dpv_'.time());
+        $xml->addAttribute('dst', 'nas');
         $transaction = $xml->addChild('xs:transaction');
         $get = $transaction->addChild('xs:get');
 
