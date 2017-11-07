@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Collection;
 use PHPUnit\Framework\TestCase;
 use pxgamer\ReadyNAS\Elements\Device;
 use pxgamer\ReadyNAS\Elements\Firmware;
@@ -30,5 +31,16 @@ class SystemTest extends TestCase
         $deviceInfo = $system->getDeviceInfo();
 
         $this->assertInstanceOf(Device::class, $deviceInfo);
+    }
+
+    /**
+     * Test whether Protocol information can be retrieved as a Collection.
+     */
+    public function testCanGetProtocolInfo()
+    {
+        $system = new System();
+        $deviceInfo = $system->getProtocolInfo();
+
+        $this->assertInstanceOf(Collection::class, $deviceInfo);
     }
 }
