@@ -31,7 +31,5 @@ class Apps extends Requests\Requester
 
             return collect($apps);
         }
-
-        return null;
     }
 }
