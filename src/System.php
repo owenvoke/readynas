@@ -1,15 +1,16 @@
 <?php
 
-namespace App;
+namespace pxgamer\ReadyNAS;
 
-use pxgamer\ReadyNAS\Requests;
+use pxgamer\ReadyNAS\Requests\FirmwareRequest;
+use pxgamer\ReadyNAS\Requests\Requester;
 
 /**
  * Class System.
  */
-class System extends Requests\Requester
+class System extends Requester
 {
-    use Requests\FirmwareRequest;
+    use FirmwareRequest;
 
     /**
      * Get details on the current firmware.
