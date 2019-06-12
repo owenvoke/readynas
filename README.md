@@ -9,25 +9,18 @@
 
 A PHP management suite for ReadyNAS devices.
 
-## Structure
-
-```
-src/
-tests/
-vendor/
-```
-
 ## Install
 
 Via Composer
 
-``` bash
+```bash
 $ composer require pxgamer/readynas
 ```
 
 ## Usage
 
 All that needs to be done, is to set the environment variables.  
+
 `NAS_HOST` - The IP/domain of the NAS  
 `NAS_USER` - The username to connect to your NAS with  
 `NAS_PASS` - The password to connect to your NAS with  
@@ -50,17 +43,17 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Testing
 
-``` bash
+```bash
 $ phpunit
 ```
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for details.
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) and [CODE_OF_CONDUCT](.github/CODE_OF_CONDUCT.md) for details.
 
 ## Security
 
-If you discover any security related issues, please email owzie123@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please email security@pxgamer.xyz instead of using the issue tracker.
 
 ## Credits
 
