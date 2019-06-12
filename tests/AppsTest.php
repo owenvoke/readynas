@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Collection;
-use PHPUnit\Framework\TestCase;
 use pxgamer\ReadyNAS\Apps;
+use PHPUnit\Framework\TestCase;
+use Illuminate\Support\Collection;
 
 /**
  * Class AppsTest.

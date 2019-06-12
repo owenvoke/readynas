@@ -3,8 +3,8 @@
 namespace pxgamer\ReadyNAS;
 
 use Illuminate\Support\Collection;
-use pxgamer\ReadyNAS\Requests\FirmwareRequest;
 use pxgamer\ReadyNAS\Requests\Requester;
+use pxgamer\ReadyNAS\Requests\FirmwareRequest;
 
 /**
  * Class System.
