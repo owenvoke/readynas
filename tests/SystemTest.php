@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Collection;
+use pxgamer\ReadyNAS\System;
 use PHPUnit\Framework\TestCase;
+use Illuminate\Support\Collection;
 use pxgamer\ReadyNAS\Elements\Device;
 use pxgamer\ReadyNAS\Elements\Firmware;
-use pxgamer\ReadyNAS\System;
 
 /**
  * Class SystemTest.

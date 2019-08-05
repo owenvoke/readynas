@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Collection;
+use pxgamer\ReadyNAS\Storage;
 use PHPUnit\Framework\TestCase;
+use Illuminate\Support\Collection;
 use pxgamer\ReadyNAS\Elements\Smart;
 use pxgamer\ReadyNAS\Elements\Volume;
-use pxgamer\ReadyNAS\Storage;
 
 /**
  * Class StorageTest.
